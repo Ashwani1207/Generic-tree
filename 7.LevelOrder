@@ -1,0 +1,12 @@
+void levelorder(node *temp){
+queue<node*> q;
+q.push(temp);
+while(q.size()>0){
+temp=q.front();
+q.pop();
+cout<<temp->data<<" ";
+for(auto child:temp->children)
+q.push(child);
+}
+cout<<"."<<endl;
+}
