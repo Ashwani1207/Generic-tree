@@ -1,0 +1,9 @@
+int hight(node *temp){
+    int ht=-1;//we are calculating on the basis if edges
+    for(auto child:temp->children){
+        int ch=hight(child);
+        ht=max(ht,ch);
+    }
+    ht+=1;
+    return ht;
+}
