@@ -1,0 +1,9 @@
+int count(node *temp){
+    int s=0;
+    for(auto child:temp->children){
+    int cz=count(child);
+    s+=cz;
+    }
+    s+=1;
+    return s;
+}
