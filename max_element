@@ -1,0 +1,11 @@
+int maxval(node* temp){
+   int m=INT_MIN;
+    for(auto child:temp->children){
+    int cm=maxval(child);
+    m=max(m,cm);
+    }
+    if(temp->data>m)
+     m=temp->data;
+   
+    return m;
+}
