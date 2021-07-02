@@ -1,0 +1,13 @@
+void pretraversal(node *temp){
+//pre recursive call area for node
+    cout<<"Pre Node"<<temp->data<<endl;
+    for(auto child:temp->children){
+    //pre recursive call area for edge like  10->20
+        cout<<"Edge Pre"<<temp->data<<"->"<<child->data<<endl;
+        pretraversal(child);
+        cout<<"Edge Post"<<child->data<<"->"<<temp->data<<endl;
+        //post recursive call area for edge
+    }
+    //post recursive call area for node
+    cout<<"Post Node"<<temp->data<<endl;
+}
