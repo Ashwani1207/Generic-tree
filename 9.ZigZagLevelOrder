@@ -1,0 +1,34 @@
+void levelorderzz(node *temp){
+    stack<node*> ms;
+    stack<node*> cs;
+    ms.push(temp);
+    int level=1;
+    while(ms.size()>0){
+        auto t=ms.top();
+        cout<<t->data<<" ";
+        ms.pop();
+        if(level%2==1){
+            for(int i=0;i<t->children.size();i++)
+            cs.push(t->children[i]);
+        }
+        else
+        {
+            for(int i=t->children.size()-1;i>=0;i--)
+            cs.push(t->children[i]);
+        }
+        if(ms.empty()){
+            ms=cs;
+            cs={};
+            cout<<endl;
+            level++;
+        }
+    }
+}
+
+
+
+Output:
+10 
+40 30 20 
+50 60 70 80 90 100 
+120 110 
