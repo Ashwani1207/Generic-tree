@@ -1,4 +1,4 @@
-void levelorderzz(node *temp){
+void levelorderlw(node *temp){
 queue<node*> q;
 queue<node*> cq;
 queue<node*> reference_to_null;
