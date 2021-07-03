@@ -1,0 +1,19 @@
+void levelorderzz(node *temp){
+queue<node*> q;
+queue<node*> cq;
+queue<node*> reference_to_null;
+q.push(temp);
+while(q.size()>0){
+temp=q.front();
+q.pop();
+cout<<temp->data<<" ";
+for(auto child:temp->children)
+cq.push(child);
+if(q.empty()){
+    q=cq;
+    cq=reference_to_null;
+    cout<<endl;
+}
+}
+
+}
