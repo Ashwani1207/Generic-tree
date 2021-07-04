@@ -1,0 +1,12 @@
+bool sameshape(node *temp1,node *temp2){
+    if(temp1->children.size()!=temp2->children.size())
+    return false;
+    for(int i=0;i<temp1->children.size();i++){
+        auto c1=temp1->children[i];
+        auto c2=temp2->children[temp2.size()-1-i];
+        if(sameshape(c1,c2)==false)
+        return false;
+        
+    }
+    return true;
+}
