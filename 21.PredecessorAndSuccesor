@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+    int data;
+    vector< node* > children;
+
+    node (int d) {
+        this -> data = d;
+        children.clear();
+    }
+};
+static node* succesor=new node(-1);
+static node *predecesor=new node(-1);
+static int s=0;
+void succesorandpredecesor(node *temp,int val){
+    if(s==0){
+        if(temp->data==val)
+        {
+            s=1;
+        }
+        else{
+            predecesor=temp;
+            
+        }
+    }
+    else if(s==1){
+        succesor=temp;
+        s=2;
+    }
+    for(auto child:temp->children){
+        succesorandpredecesor(child,val);
+    }
+}
+
+int main(){
+   // vector<int> arr({10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1});
+  int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
+    int val;
+    cin>>val;
+    node* root = NULL;
+    stack<node*> st;
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i]==-1)
+            st.pop();
+        else{
+            node* t = new node(arr[i]);
+            if(st.size() != 0)
+                st.top()->children.push_back(t);
+            else
+                root=t;
+            st.push(t);
+        }
+    }
+  
+succesorandpredecesor(root,val);
+cout<<"Predecesor"<<predecesor->data<<endl;
+cout<<"SUccerrr"<<succesor->data<<endl;
+
+    
+}
