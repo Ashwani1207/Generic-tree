@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+    int data;
+    vector< node* > children;
+
+    node (int d) {
+        this -> data = d;
+        children.clear();
+    }
+};
+static int sz;
+static int ht;
+static int mximum;
+static int mnimum;
+void multisolver(node *temp,int depth){
+    sz++;
+    mximum=max(temp->data,mximum);
+    mnimum=min(temp->data,mnimum);
+    ht=max(depth,ht);
+    for(auto child:temp->children){
+        multisolver(child,depth+1);
+    }
+}
+
+
+int main(){
+   // vector<int> arr({10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1});
+  int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
+    int val;
+    cin>>val;
+    node* root = NULL;
+    stack<node*> st;
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i]==-1)
+            st.pop();
+        else{
+            node* t = new node(arr[i]);
+            if(st.size() != 0)
+                st.top()->children.push_back(t);
+            else
+                root=t;
+            st.push(t);
+        }
+    }
+    sz=0;
+ ht=0;
+ mximum=INT_MIN;
+mnimum=INT_MAX;
+multisolver(root,0);
+cout<<"size"<<sz<<endl;
+cout<<"height"<<ht<<endl;
+cout<<"max"<<mximum<<endl;
+cout<<"min"<<mnimum<<endl;
+
+    
+}
